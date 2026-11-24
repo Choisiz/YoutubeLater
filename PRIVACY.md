@@ -7,18 +7,21 @@
 **YouTubeLater**(이하 "확장 프로그램")는 사용자가 저장한 영상을 브라우저 안에서만 관리합니다.
 
 ### 저장하는 정보
-사용자가 우클릭 메뉴로 저장을 선택한 영상의 다음 정보만 저장합니다.
-- 영상 ID, 제목, 썸네일 주소, 영상 주소
-- 저장한 시각
+1. 사용자가 우클릭 메뉴로 저장을 선택한 영상의 다음 정보
+   - 영상 ID, 제목, 썸네일 주소, 영상 주소
+   - 저장한 시각
+2. 사용자가 고른 설정
+   - 화면 언어 (자동 / 한국어 / English / 日本語 / 简体中文)
+   - 라이트·다크 모드
 
 ### 저장 위치와 이용
-- 위 정보는 사용자 브라우저의 `chrome.storage.local`에만 저장됩니다.
+- 위 정보는 사용자 브라우저의 `chrome.storage.local`에만 저장됩니다. (우클릭한 영상의 임시 정보는 `chrome.storage.session`)
 - 개발자 또는 제3자의 서버로 **전송하지 않습니다.**
 - 광고, 분석, 추적 도구를 사용하지 않으며 정보를 판매하거나 공유하지 않습니다.
-- 저장한 정보는 목록 표시, 검색, 정렬 기능에만 사용됩니다.
+- 저장한 정보는 목록 표시, 검색, 정렬 기능에, 설정은 화면 언어와 테마를 유지하는 데만 사용됩니다.
 
 ### 유튜브 접근
-- 확장 프로그램은 `youtube.com` 페이지에서 사용자가 우클릭한 썸네일의 영상 정보를 읽기 위해서만 동작합니다.
+- 확장 프로그램은 `youtube.com` 페이지에서 사용자가 우클릭한 썸네일의 영상 정보를 읽기 위해서만 동작합니다. 우클릭한 위치의 영상 정보는 저장 메뉴를 누르기 전까지 브라우저의 임시 저장 공간에만 잠시 보관되며, 저장하지 않으면 사용되지 않습니다.
 - 목록에 보이는 썸네일 이미지는 유튜브 이미지 서버에서 불러옵니다.
 - 사용자의 유튜브 계정, 로그인 정보, 시청 기록은 읽거나 수정하지 않습니다.
 
@@ -39,18 +42,21 @@
 **YouTubeLater** (the "Extension") manages the videos you save entirely inside your browser.
 
 ### Information stored
-Only for videos you choose to save from the context menu:
-- Video ID, title, thumbnail URL, video URL
-- The time you saved it
+1. For videos you choose to save from the context menu:
+   - Video ID, title, thumbnail URL, video URL
+   - The time you saved it
+2. Settings you choose:
+   - Display language (Auto / 한국어 / English / 日本語 / 简体中文)
+   - Light or dark mode
 
 ### Where it is stored and how it is used
-- This information is stored only in your browser's `chrome.storage.local`.
+- This information is stored only in your browser's `chrome.storage.local`. (Temporary information about the video you last right-clicked is kept in `chrome.storage.session`.)
 - It is **never transmitted** to the developer or any third-party server.
 - The Extension uses no ads, analytics, or tracking, and does not sell or share any information.
-- The saved information is used only to display, search, and sort your list.
+- The saved information is used only to display, search, and sort your list, and the settings only to remember your language and theme.
 
 ### YouTube access
-- The Extension runs on `youtube.com` pages only to read the information of the thumbnail you right-click.
+- The Extension runs on `youtube.com` pages only to read the information of the thumbnail you right-click. That information is held briefly in browser session storage until you press the save menu item, and is not used otherwise.
 - Thumbnail images in the list are loaded from YouTube's image servers.
 - It does not read or modify your YouTube account, login information, or watch history.
 
