@@ -1,4 +1,4 @@
-import type { SavedVideo, VideoCandidate } from './types'
+import type { LanguageSetting, SavedVideo, VideoCandidate } from './types'
 
 const VIDEOS_KEY = 'videos'
 
@@ -50,4 +50,27 @@ export async function getTheme(): Promise<Theme> {
 
 export async function setTheme(theme: Theme): Promise<void> {
   await chrome.storage.local.set({ [THEME_KEY]: theme })
+}
+
+const LANGUAGE_KEY = 'language'
+
+const LANGUAGES: readonly LanguageSetting[] = ['auto', 'ko', 'en', 'ja', 'zh_CN']
+
+export async function getLanguage(): Promise<LanguageSetting> {
+  const result = await chrome.storage.local.get(LANGUAGE_KEY)
+  const value = result[LANGUAGE_KEY] as LanguageSetting | undefined
+  return value && LANGUAGES.includes(value) ? value : 'auto'
+}
+
+export async function setLanguage(language: LanguageSetting): Promise<void> {
+  await chrome.storage.local.set({ [LANGUAGE_KEY]: language })
+}
+
+/** 언어 설정이 바뀔 때마다 호출된다. 해제 함수를 돌려준다. */
+export function onLanguageChanged(callback: () => void): () => void {
+  const listener = (changes: Record<string, chrome.storage.StorageChange>, area: string) => {
+    if (area === 'local' && LANGUAGE_KEY in changes) callback()
+  }
+  chrome.storage.onChanged.addListener(listener)
+  return () => chrome.storage.onChanged.removeListener(listener)
 }

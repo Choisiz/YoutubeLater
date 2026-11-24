@@ -1,4 +1,3 @@
-import { t } from '../shared/i18n'
 import type { VideoCandidate } from '../shared/types'
 
 const VIDEO_LINK = 'a[href*="/watch?v="], a[href^="/shorts/"], a[href*="youtube.com/shorts/"]'
@@ -39,12 +38,13 @@ function findVideoLink(target: Element): { link: HTMLAnchorElement; card: Elemen
   return inCard ? { link: inCard, card } : null
 }
 
-function extractTitle(link: HTMLAnchorElement, card: Element | null, id: string): string {
+function extractTitle(link: HTMLAnchorElement, card: Element | null): string {
   const fromCard = card?.querySelector(TITLE_SELECTOR)?.textContent?.trim()
   if (fromCard) return fromCard
   const fromLink = link.getAttribute('title') ?? link.getAttribute('aria-label')
   if (fromLink?.trim()) return fromLink.trim()
-  return t('fallbackTitle', id)
+  // 제목을 못 읽었으면 빈 문자열로 두고, 저장할 때 background가 현재 언어의 대체 제목을 채운다.
+  return ''
 }
 
 /** 우클릭한 요소가 영상 썸네일(카드)이면 영상 정보를 반환하고, 아니면 null. */
@@ -59,7 +59,7 @@ export function extractVideo(target: EventTarget | null): VideoCandidate | null 
 
   return {
     id,
-    title: extractTitle(found.link, found.card, id),
+    title: extractTitle(found.link, found.card),
     thumbnail: `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
     url: `https://www.youtube.com/watch?v=${id}`,
   }

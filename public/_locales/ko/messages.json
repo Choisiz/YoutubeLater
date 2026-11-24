@@ -103,5 +103,11 @@
         "content": "$1"
       }
     }
+  },
+  "languageLabel": {
+    "message": "언어"
+  },
+  "languageAuto": {
+    "message": "자동"
   }
 }

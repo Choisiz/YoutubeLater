@@ -103,5 +103,11 @@
         "content": "$1"
       }
     }
+  },
+  "languageLabel": {
+    "message": "言語"
+  },
+  "languageAuto": {
+    "message": "自動"
   }
 }

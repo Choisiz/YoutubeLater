@@ -6,7 +6,9 @@
 
 **유튜브에서 나중에 볼 영상을, 우클릭 한 번으로 시청 기록과 분리해 저장하세요.**
 
-![version](https://img.shields.io/badge/version-1.1.0-e53935)
+[English](README.en.md) · 한국어 · [변경 내역](CHANGELOG.md) · [개인정보 처리방침](PRIVACY.md)
+
+[![release](https://img.shields.io/github/v/release/Choisiz/YoutubeLater?color=e53935)](https://github.com/Choisiz/YoutubeLater/releases)
 ![Chrome](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -33,7 +35,7 @@
 - ✕ **보지 않고 삭제** — 항목에 마우스를 올리면 나타나는 ✕ 버튼
 - ♻️ **중복 방지** — 이미 저장한 영상은 다시 저장하지 않음
 - 🔍 **검색·정렬** — 제목 검색, 최신순 / 오래된순 / 제목순
-- 🌐 **다국어** — 한국어, English, 日本語, 简体中文 (브라우저 언어에 맞춰 자동 표시)
+- 🌐 **다국어** — 한국어, English, 日本語, 简体中文. 브라우저 언어에 맞춰 자동으로 표시되고, 팝업 상단의 언어 선택으로 직접 바꿀 수도 있음
 - 🌙 **다크 모드** — 팝업 상단 버튼으로 라이트/다크 전환 (선택은 저장됨)
 
 ## 사용 방법
@@ -42,6 +44,7 @@
 2. **"나중에 볼 영상에 저장"** 을 클릭합니다.
 3. 크롬 툴바의 **YouTubeLater 아이콘**을 눌러 저장한 영상을 확인합니다.
 4. 영상을 클릭하면 새 탭에서 재생되고 목록에서 사라집니다.
+5. 팝업 상단의 선택 상자에서 **언어**를, 달/해 버튼으로 **라이트·다크 모드**를 바꿀 수 있습니다.
 
 ## 설치
 
@@ -86,8 +89,8 @@ npm run build
 src/
 ├─ background/   서비스 워커 (우클릭 메뉴, 저장 처리)
 ├─ content/      유튜브 페이지에 주입되는 스크립트 (썸네일 감지, 토스트)
-├─ popup/        툴바 팝업 UI (목록, 검색, 정렬)
-└─ shared/       타입, 저장소, 메시지 정의
+├─ popup/        툴바 팝업 UI (목록, 검색, 정렬, 언어·테마 선택)
+└─ shared/       타입, 저장소, 다국어(i18n), 메시지 정의
 public/icons/    확장 아이콘
 public/_locales/ 다국어 문구 (ko, en, ja, zh_CN)
 ```
@@ -95,7 +98,7 @@ public/_locales/ 다국어 문구 (ko, en, ja, zh_CN)
 ## 알려진 제한
 
 - **데스크톱 크롬 전용**입니다. 모바일은 지원하지 않습니다.
-- 유튜브 화면 구조가 바뀌면 썸네일에서 영상 정보를 읽지 못할 수 있습니다. 제목이 `YouTube 영상 (ID)`처럼 보이면 [이슈](https://github.com/Choisiz/YoutubeLater/issues)로 알려 주세요.
+- 유튜브 화면 구조가 바뀌면 썸네일에서 영상 정보를 읽지 못할 수 있습니다. 제목 대신 `YouTube 영상 (ID)` 같은 대체 제목(언어별로 다름)이 보이면 [이슈](https://github.com/Choisiz/YoutubeLater/issues)로 알려 주세요.
 - 목록에서 영상을 **클릭하면 곧바로 삭제**됩니다. 되돌릴 수 없습니다.
 
 ## 로드맵
@@ -103,6 +106,10 @@ public/_locales/ 다국어 문구 (ko, en, ja, zh_CN)
 - [ ] 시청 완료 처리 / 보기 상태 구분
 - [ ] 모바일 대응 (PWA 공유 기능 등)
 - [ ] 서버 동기화
+
+## 개인정보
+
+저장한 영상 정보는 내 브라우저(`chrome.storage.local`)에만 보관되고 어디로도 전송되지 않습니다. 자세한 내용은 [개인정보 처리방침](PRIVACY.md)을 참고하세요.
 
 ## 라이선스
 

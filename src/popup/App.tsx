@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getVideos, onVideosChanged, removeVideo, setTheme } from '../shared/storage'
+import { getVideos, onVideosChanged, removeVideo, setLanguage, setTheme } from '../shared/storage'
 import type { Theme } from '../shared/storage'
-import type { SavedVideo } from '../shared/types'
-import { t, uiLanguage } from '../shared/i18n'
+import type { LanguageSetting, SavedVideo } from '../shared/types'
+import { initI18n, LOCALES, t, uiLanguage } from '../shared/i18n'
 import { applyTheme, isDark } from './theme'
 
 type SortKey = 'newest' | 'oldest' | 'title'
 
-const SORTERS: Record<SortKey, (a: SavedVideo, b: SavedVideo) => number> = {
+const SORTERS: Record<SortKey, (a: SavedVideo, b: SavedVideo, lang: string) => number> = {
   newest: (a, b) => b.savedAt - a.savedAt,
   oldest: (a, b) => a.savedAt - b.savedAt,
-  title: (a, b) => a.title.localeCompare(b.title, uiLanguage()),
+  title: (a, b, lang) => a.title.localeCompare(b.title, lang),
 }
 
 function formatSavedAt(savedAt: number): string {
@@ -19,7 +19,14 @@ function formatSavedAt(savedAt: number): string {
   })
 }
 
-export default function App({ initialTheme }: { initialTheme: Theme }) {
+export default function App({
+  initialTheme,
+  initialLanguage,
+}: {
+  initialTheme: Theme
+  initialLanguage: LanguageSetting
+}) {
+  const [language, setLanguageState] = useState<LanguageSetting>(initialLanguage)
   const [theme, setThemeState] = useState<Theme>(initialTheme)
   const [videos, setVideos] = useState<SavedVideo[] | null>(null)
   const [query, setQuery] = useState('')
@@ -31,12 +38,13 @@ export default function App({ initialTheme }: { initialTheme: Theme }) {
     return onVideosChanged(load)
   }, [])
 
+  const lang = uiLanguage()
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase()
     return (videos ?? [])
       .filter((v) => v.title.toLowerCase().includes(q))
-      .sort(SORTERS[sort])
-  }, [videos, query, sort])
+      .sort((a, b) => SORTERS[sort](a, b, lang))
+  }, [videos, query, sort, lang])
 
   // 클릭 = 시청 시작으로 보고, 새 탭에서 열면서 저장 공간에서 삭제한다.
   async function watch(video: SavedVideo) {
@@ -50,6 +58,14 @@ export default function App({ initialTheme }: { initialTheme: Theme }) {
     setThemeState(next)
     applyTheme(next)
     void setTheme(next)
+  }
+
+  // 선택한 언어를 저장하고, 문구를 다시 불러온 뒤 화면을 갱신한다.
+  async function changeLanguage(next: LanguageSetting) {
+    await setLanguage(next)
+    await initI18n()
+    document.documentElement.lang = uiLanguage()
+    setLanguageState(next)
   }
 
   const dark = isDark(theme)
@@ -67,6 +83,20 @@ export default function App({ initialTheme }: { initialTheme: Theme }) {
               : t('countFiltered', String(visible.length), String(total))}
           </span>
         )}
+        <select
+          className="langSelect"
+          value={language}
+          onChange={(e) => void changeLanguage(e.target.value as LanguageSetting)}
+          aria-label={t('languageLabel')}
+          title={t('languageLabel')}
+        >
+          <option value="auto">{t('languageAuto')}</option>
+          {LOCALES.map((l) => (
+            <option key={l.code} value={l.code}>
+              {l.label}
+            </option>
+          ))}
+        </select>
         <button
           className="themeToggle"
           onClick={toggleTheme}

@@ -37,6 +37,11 @@ body { margin: 0; background: var(--bg); color: var(--fg); font: 13px/1.4 system
 .header img { width: 20px; height: 20px; }
 .header h1 { font-size: 15px; margin: 0; flex: 1; }
 .count { color: var(--muted); font-size: 12px; }
+.langSelect {
+  height: 26px; max-width: 96px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--fg); font: inherit; font-size: 12px; padding: 0 4px;
+}
+.langSelect:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .themeToggle {
   width: 28px; height: 28px; border: none; border-radius: 50%; background: none;
   font-size: 15px; line-height: 1; cursor: pointer;
