@@ -37,3 +37,17 @@ export function onVideosChanged(callback: () => void): () => void {
   chrome.storage.onChanged.addListener(listener)
   return () => chrome.storage.onChanged.removeListener(listener)
 }
+
+export type Theme = 'system' | 'light' | 'dark'
+
+const THEME_KEY = 'theme'
+
+export async function getTheme(): Promise<Theme> {
+  const result = await chrome.storage.local.get(THEME_KEY)
+  const value = result[THEME_KEY]
+  return value === 'light' || value === 'dark' ? value : 'system'
+}
+
+export async function setTheme(theme: Theme): Promise<void> {
+  await chrome.storage.local.set({ [THEME_KEY]: theme })
+}

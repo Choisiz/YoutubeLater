@@ -1,3 +1,4 @@
+import { t } from '../shared/i18n'
 import type { VideoCandidate } from '../shared/types'
 
 const VIDEO_LINK = 'a[href*="/watch?v="], a[href^="/shorts/"], a[href*="youtube.com/shorts/"]'
@@ -43,7 +44,7 @@ function extractTitle(link: HTMLAnchorElement, card: Element | null, id: string)
   if (fromCard) return fromCard
   const fromLink = link.getAttribute('title') ?? link.getAttribute('aria-label')
   if (fromLink?.trim()) return fromLink.trim()
-  return `YouTube 영상 (${id})`
+  return t('fallbackTitle', id)
 }
 
 /** 우클릭한 요소가 영상 썸네일(카드)이면 영상 정보를 반환하고, 아니면 null. */

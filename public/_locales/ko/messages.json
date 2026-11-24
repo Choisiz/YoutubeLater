@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "YouTubeLater"
+  },
+  "extDescription": {
+    "message": "유튜브 영상을 시청 기록과 분리해 나중에 볼 목록으로 저장합니다."
+  },
+  "contextMenuSave": {
+    "message": "나중에 볼 영상에 저장"
+  },
+  "toastNotOnThumbnail": {
+    "message": "영상 썸네일 위에서 우클릭해 주세요"
+  },
+  "toastDuplicate": {
+    "message": "이미 저장된 영상입니다: $TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaved": {
+    "message": "저장했습니다: $TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "countAll": {
+    "message": "$COUNT$개",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countFiltered": {
+    "message": "$VISIBLE$ / $TOTAL$개",
+    "placeholders": {
+      "visible": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "themeToLight": {
+    "message": "라이트 모드로 전환"
+  },
+  "themeToDark": {
+    "message": "다크 모드로 전환"
+  },
+  "searchPlaceholder": {
+    "message": "제목 검색"
+  },
+  "sortLabel": {
+    "message": "정렬"
+  },
+  "sortNewest": {
+    "message": "최신순"
+  },
+  "sortOldest": {
+    "message": "오래된순"
+  },
+  "sortTitle": {
+    "message": "제목순"
+  },
+  "loading": {
+    "message": "불러오는 중..."
+  },
+  "emptyList": {
+    "message": "저장한 영상이 없습니다."
+  },
+  "emptyHint": {
+    "message": "유튜브 썸네일을 우클릭해 저장해 보세요."
+  },
+  "noResults": {
+    "message": "검색 결과가 없습니다."
+  },
+  "watchTitle": {
+    "message": "클릭하면 새 탭에서 재생하고 목록에서 삭제됩니다"
+  },
+  "savedAt": {
+    "message": "$DATE$ 저장",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "removeLabel": {
+    "message": "삭제"
+  },
+  "removeTitle": {
+    "message": "보지 않고 삭제"
+  },
+  "fallbackTitle": {
+    "message": "YouTube 영상 ($ID$)",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  }
+}

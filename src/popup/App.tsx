@@ -1,22 +1,26 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getVideos, onVideosChanged, removeVideo } from '../shared/storage'
+import { getVideos, onVideosChanged, removeVideo, setTheme } from '../shared/storage'
+import type { Theme } from '../shared/storage'
 import type { SavedVideo } from '../shared/types'
+import { t, uiLanguage } from '../shared/i18n'
+import { applyTheme, isDark } from './theme'
 
 type SortKey = 'newest' | 'oldest' | 'title'
 
 const SORTERS: Record<SortKey, (a: SavedVideo, b: SavedVideo) => number> = {
   newest: (a, b) => b.savedAt - a.savedAt,
   oldest: (a, b) => a.savedAt - b.savedAt,
-  title: (a, b) => a.title.localeCompare(b.title, 'ko'),
+  title: (a, b) => a.title.localeCompare(b.title, uiLanguage()),
 }
 
 function formatSavedAt(savedAt: number): string {
-  return new Date(savedAt).toLocaleString('ko-KR', {
-    month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false,
+  return new Date(savedAt).toLocaleString(uiLanguage(), {
+    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false,
   })
 }
 
-export default function App() {
+export default function App({ initialTheme }: { initialTheme: Theme }) {
+  const [theme, setThemeState] = useState<Theme>(initialTheme)
   const [videos, setVideos] = useState<SavedVideo[] | null>(null)
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortKey>('newest')
@@ -40,6 +44,15 @@ export default function App() {
     await chrome.tabs.create({ url: video.url })
   }
 
+  // 지금 화면의 반대 테마로 바꾸고 선택을 저장한다.
+  function toggleTheme() {
+    const next: Theme = isDark(theme) ? 'light' : 'dark'
+    setThemeState(next)
+    applyTheme(next)
+    void setTheme(next)
+  }
+
+  const dark = isDark(theme)
   const total = videos?.length ?? 0
 
   return (
@@ -49,32 +62,46 @@ export default function App() {
         <h1>YouTubeLater</h1>
         {total > 0 && (
           <span className="count">
-            {visible.length === total ? `${total}개` : `${visible.length} / ${total}개`}
+            {visible.length === total
+              ? t('countAll', String(total))
+              : t('countFiltered', String(visible.length), String(total))}
           </span>
         )}
+        <button
+          className="themeToggle"
+          onClick={toggleTheme}
+          aria-label={t(dark ? 'themeToLight' : 'themeToDark')}
+          title={t(dark ? 'themeToLight' : 'themeToDark')}
+        >
+          {dark ? '☀️' : '🌙'}
+        </button>
       </div>
 
       {total > 0 && (
         <div className="toolbar">
           <input
             type="search"
-            placeholder="제목 검색"
+            placeholder={t('searchPlaceholder')}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} aria-label="정렬">
-            <option value="newest">최신순</option>
-            <option value="oldest">오래된순</option>
-            <option value="title">제목순</option>
+          <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} aria-label={t('sortLabel')}>
+            <option value="newest">{t('sortNewest')}</option>
+            <option value="oldest">{t('sortOldest')}</option>
+            <option value="title">{t('sortTitle')}</option>
           </select>
         </div>
       )}
 
-      {videos === null && <p className="empty">불러오는 중...</p>}
+      {videos === null && <p className="empty">{t('loading')}</p>}
       {videos !== null && total === 0 && (
-        <p className="empty">저장한 영상이 없습니다.<br />유튜브 썸네일을 우클릭해 저장해 보세요.</p>
+        <p className="empty">
+          {t('emptyList')}
+          <br />
+          {t('emptyHint')}
+        </p>
       )}
-      {total > 0 && visible.length === 0 && <p className="empty">검색 결과가 없습니다.</p>}
+      {total > 0 && visible.length === 0 && <p className="empty">{t('noResults')}</p>}
 
       <ul className="list">
         {visible.map((video) => (
@@ -82,19 +109,19 @@ export default function App() {
             <button
               className="watch"
               onClick={() => void watch(video)}
-              title="클릭하면 새 탭에서 재생하고 목록에서 삭제됩니다"
+              title={t('watchTitle')}
             >
               <img className="thumb" src={video.thumbnail} alt="" />
               <span className="info">
                 <span className="title">{video.title}</span>
-                <span className="date">{formatSavedAt(video.savedAt)} 저장</span>
+                <span className="date">{t('savedAt', formatSavedAt(video.savedAt))}</span>
               </span>
             </button>
             <button
               className="remove"
               onClick={() => void removeVideo(video.id)}
-              aria-label="삭제"
-              title="보지 않고 삭제"
+              aria-label={t('removeLabel')}
+              title={t('removeTitle')}
             >
               ✕
             </button>

@@ -1,4 +1,5 @@
 import type { ExtensionMessage, ToastMessage } from '../shared/messages'
+import { t } from '../shared/i18n'
 import { saveVideo } from '../shared/storage'
 import type { VideoCandidate } from '../shared/types'
 
@@ -12,7 +13,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
       id: MENU_ID,
-      title: '나중에 볼 영상에 저장',
+      title: t('contextMenuSave'),
       contexts: ['all'],
       documentUrlPatterns: ['https://www.youtube.com/*'],
     })
@@ -45,10 +46,10 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   const video = stored[key] as VideoCandidate | undefined
 
   if (!video) {
-    notify(tab.id, '영상 썸네일 위에서 우클릭해 주세요')
+    notify(tab.id, t('toastNotOnThumbnail'))
     return
   }
 
   const { duplicate } = await saveVideo(video)
-  notify(tab.id, duplicate ? `이미 저장된 영상입니다: ${video.title}` : `저장했습니다: ${video.title}`)
+  notify(tab.id, t(duplicate ? 'toastDuplicate' : 'toastSaved', video.title))
 })

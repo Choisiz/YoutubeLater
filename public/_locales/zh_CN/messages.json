@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "YouTubeLater"
+  },
+  "extDescription": {
+    "message": "将 YouTube 视频保存为“稍后观看”列表，与观看历史分开管理。"
+  },
+  "contextMenuSave": {
+    "message": "保存到稍后观看"
+  },
+  "toastNotOnThumbnail": {
+    "message": "请在视频缩略图上右键点击"
+  },
+  "toastDuplicate": {
+    "message": "已保存过：$TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaved": {
+    "message": "已保存：$TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "countAll": {
+    "message": "$COUNT$ 个",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countFiltered": {
+    "message": "$VISIBLE$ / $TOTAL$ 个",
+    "placeholders": {
+      "visible": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "themeToLight": {
+    "message": "切换到浅色模式"
+  },
+  "themeToDark": {
+    "message": "切换到深色模式"
+  },
+  "searchPlaceholder": {
+    "message": "搜索标题"
+  },
+  "sortLabel": {
+    "message": "排序"
+  },
+  "sortNewest": {
+    "message": "最新优先"
+  },
+  "sortOldest": {
+    "message": "最早优先"
+  },
+  "sortTitle": {
+    "message": "按标题"
+  },
+  "loading": {
+    "message": "加载中..."
+  },
+  "emptyList": {
+    "message": "还没有保存的视频。"
+  },
+  "emptyHint": {
+    "message": "右键点击 YouTube 缩略图即可保存。"
+  },
+  "noResults": {
+    "message": "没有搜索结果。"
+  },
+  "watchTitle": {
+    "message": "点击后在新标签页播放，并从列表中删除"
+  },
+  "savedAt": {
+    "message": "保存于 $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "removeLabel": {
+    "message": "删除"
+  },
+  "removeTitle": {
+    "message": "不观看直接删除"
+  },
+  "fallbackTitle": {
+    "message": "YouTube 视频 ($ID$)",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  }
+}

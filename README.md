@@ -6,7 +6,7 @@
 
 **유튜브에서 나중에 볼 영상을, 우클릭 한 번으로 시청 기록과 분리해 저장하세요.**
 
-![version](https://img.shields.io/badge/version-1.0.0-e53935)
+![version](https://img.shields.io/badge/version-1.1.0-e53935)
 ![Chrome](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -33,7 +33,8 @@
 - ✕ **보지 않고 삭제** — 항목에 마우스를 올리면 나타나는 ✕ 버튼
 - ♻️ **중복 방지** — 이미 저장한 영상은 다시 저장하지 않음
 - 🔍 **검색·정렬** — 제목 검색, 최신순 / 오래된순 / 제목순
-- 🌙 **다크 모드** — 시스템 설정을 따라감
+- 🌐 **다국어** — 한국어, English, 日本語, 简体中文 (브라우저 언어에 맞춰 자동 표시)
+- 🌙 **다크 모드** — 팝업 상단 버튼으로 라이트/다크 전환 (선택은 저장됨)
 
 ## 사용 방법
 
@@ -88,6 +89,7 @@ src/
 ├─ popup/        툴바 팝업 UI (목록, 검색, 정렬)
 └─ shared/       타입, 저장소, 메시지 정의
 public/icons/    확장 아이콘
+public/_locales/ 다국어 문구 (ko, en, ja, zh_CN)
 ```
 
 ## 알려진 제한

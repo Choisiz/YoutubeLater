@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "YouTubeLater"
+  },
+  "extDescription": {
+    "message": "YouTube の動画を視聴履歴とは別に「あとで見る」リストとして保存します。"
+  },
+  "contextMenuSave": {
+    "message": "あとで見る動画に保存"
+  },
+  "toastNotOnThumbnail": {
+    "message": "動画のサムネイルの上で右クリックしてください"
+  },
+  "toastDuplicate": {
+    "message": "すでに保存されています: $TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaved": {
+    "message": "保存しました: $TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "countAll": {
+    "message": "$COUNT$件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countFiltered": {
+    "message": "$VISIBLE$ / $TOTAL$件",
+    "placeholders": {
+      "visible": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "themeToLight": {
+    "message": "ライトモードに切り替え"
+  },
+  "themeToDark": {
+    "message": "ダークモードに切り替え"
+  },
+  "searchPlaceholder": {
+    "message": "タイトルで検索"
+  },
+  "sortLabel": {
+    "message": "並べ替え"
+  },
+  "sortNewest": {
+    "message": "新しい順"
+  },
+  "sortOldest": {
+    "message": "古い順"
+  },
+  "sortTitle": {
+    "message": "タイトル順"
+  },
+  "loading": {
+    "message": "読み込み中..."
+  },
+  "emptyList": {
+    "message": "保存した動画はありません。"
+  },
+  "emptyHint": {
+    "message": "YouTube のサムネイルを右クリックして保存してみましょう。"
+  },
+  "noResults": {
+    "message": "検索結果がありません。"
+  },
+  "watchTitle": {
+    "message": "クリックすると新しいタブで再生し、リストから削除されます"
+  },
+  "savedAt": {
+    "message": "$DATE$に保存",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "removeLabel": {
+    "message": "削除"
+  },
+  "removeTitle": {
+    "message": "見ずに削除"
+  },
+  "fallbackTitle": {
+    "message": "YouTube 動画 ($ID$)",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  }
+}

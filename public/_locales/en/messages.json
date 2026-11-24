@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "YouTubeLater"
+  },
+  "extDescription": {
+    "message": "Save YouTube videos for later, kept separate from your watch history."
+  },
+  "contextMenuSave": {
+    "message": "Save to watch later"
+  },
+  "toastNotOnThumbnail": {
+    "message": "Right-click on a video thumbnail"
+  },
+  "toastDuplicate": {
+    "message": "Already saved: $TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaved": {
+    "message": "Saved: $TITLE$",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      }
+    }
+  },
+  "countAll": {
+    "message": "$COUNT$ saved",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "countFiltered": {
+    "message": "$VISIBLE$ / $TOTAL$ saved",
+    "placeholders": {
+      "visible": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "themeToLight": {
+    "message": "Switch to light mode"
+  },
+  "themeToDark": {
+    "message": "Switch to dark mode"
+  },
+  "searchPlaceholder": {
+    "message": "Search titles"
+  },
+  "sortLabel": {
+    "message": "Sort"
+  },
+  "sortNewest": {
+    "message": "Newest"
+  },
+  "sortOldest": {
+    "message": "Oldest"
+  },
+  "sortTitle": {
+    "message": "Title"
+  },
+  "loading": {
+    "message": "Loading..."
+  },
+  "emptyList": {
+    "message": "No saved videos."
+  },
+  "emptyHint": {
+    "message": "Right-click a YouTube thumbnail to save it."
+  },
+  "noResults": {
+    "message": "No results found."
+  },
+  "watchTitle": {
+    "message": "Click to play in a new tab and remove from the list"
+  },
+  "savedAt": {
+    "message": "Saved $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "removeLabel": {
+    "message": "Delete"
+  },
+  "removeTitle": {
+    "message": "Delete without watching"
+  },
+  "fallbackTitle": {
+    "message": "YouTube video ($ID$)",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  }
+}
