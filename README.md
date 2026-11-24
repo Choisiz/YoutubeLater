@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="public/icons/icon128.png" alt="youtubeLater 아이콘" width="96" height="96" />
+<img src="public/icons/icon128.png" alt="YouTubeLater 아이콘" width="96" height="96" />
 
-# youtubeLater
+# YouTubeLater
 
 **유튜브에서 나중에 볼 영상을, 우클릭 한 번으로 시청 기록과 분리해 저장하세요.**
 
@@ -18,7 +18,7 @@
 
 ## 왜 만들었나요?
 
-| 문제 | youtubeLater의 해결 |
+| 문제 | YouTubeLater의 해결 |
 | --- | --- |
 | 실제로 본 영상과 나중에 볼 영상이 **시청 기록에 뒤섞인다** | 저장한 영상은 유튜브 시청 기록과 **완전히 분리**해 따로 보관 |
 | 나중에 보려던 영상을 **다시 찾기 어렵다** | 팝업에서 한눈에 보고, 제목 **검색·정렬** 지원 |
@@ -39,7 +39,7 @@
 
 1. 유튜브(`youtube.com`)에서 나중에 볼 영상의 **썸네일을 우클릭**합니다.
 2. **"나중에 볼 영상에 저장"** 을 클릭합니다.
-3. 크롬 툴바의 **youtubeLater 아이콘**을 눌러 저장한 영상을 확인합니다.
+3. 크롬 툴바의 **YouTubeLater 아이콘**을 눌러 저장한 영상을 확인합니다.
 4. 영상을 클릭하면 새 탭에서 재생되고 목록에서 사라집니다.
 
 ## 설치
@@ -48,7 +48,7 @@
 
 ### 릴리스 파일로 설치
 
-1. [Releases](https://github.com/Choisiz/YoutubeLater/releases)에서 최신 `youtubeLater-v*.zip`을 받아 압축을 풉니다.
+1. [Releases](https://github.com/Choisiz/YoutubeLater/releases)에서 최신 `YouTubeLater-v*.zip`을 받아 압축을 풉니다.
 2. 크롬에서 `chrome://extensions`를 엽니다.
 3. 우측 상단 **개발자 모드**를 켭니다.
 4. **압축해제된 확장 프로그램을 로드합니다**를 누르고 압축 푼 폴더를 선택합니다.

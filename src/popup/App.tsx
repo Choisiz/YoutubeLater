@@ -46,7 +46,7 @@ export default function App() {
     <div className="app">
       <div className="header">
         <img src="/icons/icon48.png" alt="" />
-        <h1>youtubeLater</h1>
+        <h1>YouTubeLater</h1>
         {total > 0 && (
           <span className="count">
             {visible.length === total ? `${total}개` : `${visible.length} / ${total}개`}
