@@ -8,6 +8,7 @@
 
 ![version](https://img.shields.io/badge/version-1.0.0-e53935)
 ![Chrome](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 
@@ -100,3 +101,7 @@ public/icons/    확장 아이콘
 - [ ] 시청 완료 처리 / 보기 상태 구분
 - [ ] 모바일 대응 (PWA 공유 기능 등)
 - [ ] 서버 동기화
+
+## 라이선스
+
+[MIT License](LICENSE) © 2026 Choisiz
